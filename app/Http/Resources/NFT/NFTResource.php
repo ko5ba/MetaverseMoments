@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Resources\Image;
+namespace App\Http\Resources\NFT;
 
-use App\Models\Category;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ImageResource extends JsonResource
+class NFTResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -18,15 +17,15 @@ class ImageResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'user_id' => $this->user->id,
-            'path_image' => $this->path_image,
+            'user_id' => $this->user_id,
             'title' => $this->title,
-            'promt_for_create' => $this->promt_for_create,
             'description' => $this->description,
-            'category_id' => $this->category->id,
+            'path_image' => $this->path_image,
+            'token_id' => $this->token_id,
+            'contract_address' => $this->contract_address,
+            'metadata' => $this->metadata,
             'created_at' => Carbon::parse($this->created_at)->format('Y-m-d H:i'),
-            'updated_at' => Carbon::parse($this->updated_at)->format('Y-m-d H:i'),
-            'deleted_at' => $this->deleted_at ? Carbon::parse($this->deleted_at)->format('Y-m-d H:i') : null
+            'updated_at' => Carbon::parse($this->updated_at)->format('Y-m-d H:i')
         ];
     }
 }

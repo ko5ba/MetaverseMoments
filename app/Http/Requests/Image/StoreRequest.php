@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer|exists:users,id',
-            'path_image' => 'required|string|url',
+            'path_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'title' => 'required|string|max:30',
             'promt_for_create' => 'nullable|string',
             'description' => 'nullable|string',
@@ -37,6 +37,8 @@ class StoreRequest extends FormRequest
             'user_id.required' => 'Ошибка авторизации',
             'user_id.exists' => 'Ваш профиль не найден',
             'path_image.required' => 'Добавьте изображение',
+            'path_image.image' => 'Вы пытаетесь добавить не изображение',
+            'path_image.mimes' => 'Неверный формат файла, доступен: jpeg,png,jpg,gif,svg',
             'title.required' => 'Введите название',
             'title.max' => 'Максимальное количество символов не должно превышать 30',
             'category_id.required' => 'Выберите категорию',

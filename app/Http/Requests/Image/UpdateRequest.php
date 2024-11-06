@@ -23,7 +23,7 @@ class UpdateRequest extends FormRequest
     {
         return [
             'user_id' => 'required|integer|exists:users,id',
-            'path_image' => 'nullable|string|url',
+            'path_image' => '=nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             'title' => 'nullable|string|max:30',
             'promt_for_create' => 'nullable|string',
             'description' => 'nullable|string',
@@ -36,6 +36,8 @@ class UpdateRequest extends FormRequest
         return [
             'user_id.required' => 'Ошибка авторизации',
             'user_id.exists' => 'Ваш профиль не найден',
+            'path_image.image' => 'Вы пытаетесь добавить не изображение',
+            'path_image.mimes' => 'Неверный формат файла, доступен: jpeg,png,jpg,gif,svg',
             'title.max' => 'Максимальное количество символов не должно превышать 30',
             'category_id.exists' => 'Такой категории не существует'
         ];

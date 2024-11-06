@@ -70,4 +70,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Image::class, 'user_id', 'id');
     }
+
+    public function nfts(): HasMany
+    {
+        return $this->hasMany(NFT::class, 'user_id', 'id');
+    }
 }
